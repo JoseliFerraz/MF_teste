@@ -5,45 +5,13 @@
 #install.packages("shiny")
 
 #-----------------------------------------------------------------------
-# => Resumo : desenvolvimento do algoritmo
+# => Resumo : Desenvolvimento do algoritmo
 # Codigo simples para carregamento dos dados disponibilizados no site do ministerio 
 
 
 #-----------------------------------------------------------------------
 
-# # library(shiny)
-# # 
-# # # Define UI ----
-# ui <- fluidPage(
-#   titlePanel("Atualização da série Ministerio da Fazenda"),
-#   
-#   fluidRow(
-#     
-#     column(3,
-#            fileInput("file", h4("Selecione o arquivo"))),
-#     
-#     
-#     column(3,
-#            h4("Botoes "),
-#             br(),
-#             submitButton("Carregamento")),
-#     
-#     sidebarPanel(
-#     # mainPanel(
-#       dataTableOutput("file"))
-#       
-#       
-#     )
-#     
-#   )
-# 
-# # Define server logic ----
-# server <- function(input, output) {
-#   
-# }
-# 
-# # Run the app ----
-# shinyApp(ui = ui, server = server)
+
 #-----------------------------------------------------------------------
 library(shiny)
 shinyUI(fluidPage(
@@ -79,6 +47,7 @@ shinyUI(fluidPage(
          # Botao para execucao do algoritmo de rotina MF
          submitButton("Submit")
       ),
+      
       # Painel para visualizacao dos dados
     mainPanel(
       uiOutput("tb")
@@ -88,4 +57,11 @@ shinyUI(fluidPage(
       #                   tabPanel("Data", tableOutput("table")))
      )
     )
-))
+  )
+)
+#-----------------------------------------------------------------------
+#-----------------------------------------------------------------------
+# 1) https://www.youtube.com/watch?v=HPZSunrSo5M
+# 2) http://shiny.rstudio.com/tutorial/written-tutorial/lesson3/
+#-----------------------------------------------------------------------
+#-----------------------------------------------------------------------

@@ -22,7 +22,10 @@ dados=X6_jun18
 head(dados)
 str(dados[10,2])
 names(dados)
+
+
 colnames(dados)=c("nomes","mesatual","mesaterior","anoanterior","variacao1","variacao2");names(dados)
+
 # Fixar todas as casas decimais dos dados
 options(digits=17)
 
@@ -82,11 +85,11 @@ for(i in 9:n){
 }
 
 
-
+# ----------------------------------------------------------------------------------------------------------------
 # Armazenando e alterando os formatos dos dados
 # Esses dados nao esta sendo fornecidos pelo Ministerio : observar caso retornem , deve-se retirar os comentarios
 # a=as.numeric(a);d=as.numeric(d)
-
+# ----------------------------------------------------------------------------------------------------------------
 
 b=as.numeric(b)
 c=as.numeric(c)
