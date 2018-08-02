@@ -15,16 +15,16 @@ str(dados)
 # Para leitura arquivi excel
 library(readxl)
 #--------------------------------
-X6_jun18 <- read_excel("//srjn3/area_corporativa/Projeto_IPEADATA/temporario/Joseli/MF/Joseli/Dados/2018/6-jun18.xlsx", 
+generica <- read_excel("//srjn3/area_corporativa/Projeto_IPEADATA/temporario/Joseli/MF/Joseli/Dados/2018/6-jun18.xlsx", 
                        col_names = FALSE)
-View(X6_jun18)
+View(generica)
 dados=X6_jun18
 head(dados)
-str(dados[10,2])
-names(dados)
+str(generica[10,2])
+names(generica)
 
 
-colnames(dados)=c("nomes","mesatual","mesaterior","anoanterior","variacao1","variacao2");names(dados)
+colnames(generica)=c("nomes","mesatual","mesaterior","anoanterior","variacao1","variacao2");names(dados)
 
 # Fixar todas as casas decimais dos dados
 options(digits=17)
@@ -64,22 +64,24 @@ options(digits=17)
 
 
 # Para excel
-n=length(dados$X0)
+n=length(generica$nomes)
 for(i in 9:n){ 
-  if((dados$X0[i]=="PSS - CONTRIB. DO PLANO DE SEGURIDADE DO SERVIDOR")|
-     (dados$X0[i]=="OUTRAS RECEITAS ADMINISTRADAS")){ #dados$X[i]=="CONTRIBUI??O PARA O FUNDAF")|(
+  # Mes anterior
+  if((generica$nomes[i]=="PSS - CONTRIB. DO PLANO DE SEGURIDADE DO SERVIDOR")|
+     (generica$nomes[i]=="OUTRAS RECEITAS ADMINISTRADAS")){ #dados$X[i]=="CONTRIBUI??O PARA O FUNDAF")|(
     
-    # Mes anterior
+    
     #a=dados$X.2[which(dados$X=="CONTRIBUI??O PARA O FUNDAF")]
-    b=dados$X2[which(dados$X=="PSS - CONTRIB. DO PLANO DE SEGURIDADE DO SERVIDOR")]
-    c=dados$X2[which(dados$X=="OUTRAS RECEITAS ADMINISTRADAS")]
-    if((dados$X0[i]=="PSS - CONTRIB. DO PLANO DE SEGURIDADE DO SERVIDOR")|
-       (dados$X0[i]=="OUTRAS RECEITAS ADMINISTRADAS")){#dados$X[i]=="CONTRIBUI??O PARA O FUNDAF")|(
-      
-      # Mes Atual
+    b=generica$mesaterior[which(generica$nomes=="PSS - CONTRIB. DO PLANO DE SEGURIDADE DO SERVIDOR")]
+    c=generica$mesaterior[which(generica$nomes=="OUTRAS RECEITAS ADMINISTRADAS")]
+    
+    # Mes Atual
+    if((generica$nomes[i]=="PSS - CONTRIB. DO PLANO DE SEGURIDADE DO SERVIDOR")|
+       (generica$nomes[i]=="OUTRAS RECEITAS ADMINISTRADAS")){#dados$X[i]=="CONTRIBUI??O PARA O FUNDAF")|(
+        
       #d=dados$X.1[which(dados$X=="CONTRIBUI??O PARA O FUNDAF")]
-      e=dados$X1[which(dados$X=="PSS - CONTRIB. DO PLANO DE SEGURIDADE DO SERVIDOR")]
-      f=dados$X1[which(dados$X=="OUTRAS RECEITAS ADMINISTRADAS")]
+      e=generica$mesatual[which(generica$nomes=="PSS - CONTRIB. DO PLANO DE SEGURIDADE DO SERVIDOR")]
+      f=generica$mesatual[which(generica$nomes=="OUTRAS RECEITAS ADMINISTRADAS")]
     }
   }
 }
